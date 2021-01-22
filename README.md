@@ -1,32 +1,46 @@
-## Feature testcontainers documentation
+# Luizalabs challenge
 
-- [https://www.testcontainers.org/](https://www.testcontainers.org/)
+## Para rodar localmente é necessário ter o docker instalado com uma instalção padrão do postgres
 
-## Feature http-client documentation
+`docker run --network=host --name postgres -e POSTGRES_PASSWORD=postgres -d postgres`
 
-- [Micronaut Micronaut HTTP Client documentation](https://docs.micronaut.io/latest/guide/index.html#httpClient)
+## Para rodar os testes
 
-## Feature data-jdbc documentation
+`./gradlew test`
 
-- [Micronaut Micronaut Data JDBC documentation](https://micronaut-projects.github.io/micronaut-data/latest/guide/index.html#jdbc)
+## Para rodar a aplicação
 
-## Feature management documentation
+`./gradlew run`
 
-- [Micronaut Micronaut Management documentation](https://docs.micronaut.io/latest/guide/index.html#management)
+## Para buildar o pacote aplicação
 
-## Feature openapi documentation
+`./gradlew build `
 
-- [Micronaut OpenAPI Support documentation](https://micronaut-projects.github.io/micronaut-openapi/latest/guide/index.html)
+Vai gerar um jar challenge-0.1-all.jar dentro do diretório /build/libs/ dentro do projeto
 
-- [https://www.openapis.org](https://www.openapis.org)
+Para executar o jar bastar executar o comando abaixo
 
-## Feature lombok documentation
+` java -jar build/libs/challenge-0.1-all.jar
+`
 
-- [Micronaut Project Lombok documentation](https://docs.micronaut.io/latest/guide/index.html#lombok)
+## Licença
 
-- [https://projectlombok.org/features/all](https://projectlombok.org/features/all)
+The MIT License (MIT)
 
-## Feature jdbc-hikari documentation
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-- [Micronaut Hikari JDBC Connection Pool documentation](https://micronaut-projects.github.io/micronaut-sql/latest/guide/index.html#jdbc)
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.

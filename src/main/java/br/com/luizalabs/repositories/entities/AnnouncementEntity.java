@@ -6,6 +6,9 @@ import io.micronaut.data.annotation.MappedEntity;
 import lombok.Builder;
 import lombok.Data;
 
+import javax.annotation.Nullable;
+import java.time.LocalDateTime;
+
 @Builder
 @Data
 @MappedEntity
@@ -19,5 +22,12 @@ public class AnnouncementEntity {
 
     private String message;
 
+    private LocalDateTime dateTimeToSend;
+
+    @Nullable
+    private LocalDateTime dateTimeOfSending;
+
     private AnnouncementTypeEntity type;
+
+    private ProcessingStatusTypeEntity status;
 }

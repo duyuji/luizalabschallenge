@@ -2,12 +2,16 @@ package br.com.luizalabs.adapters;
 
 import br.com.luizalabs.controllers.entities.AnnouncementDTO;
 import br.com.luizalabs.controllers.entities.AnnouncementTypeDTO;
+import br.com.luizalabs.controllers.entities.ProcessingStatusTypeDTO;
 import br.com.luizalabs.entities.Announcement;
 import br.com.luizalabs.entities.AnnouncementType;
+import br.com.luizalabs.entities.ProcessingStatusType;
 import br.com.luizalabs.repositories.AnnouncementRepository;
 import br.com.luizalabs.repositories.entities.AnnouncementEntity;
 import br.com.luizalabs.repositories.entities.AnnouncementTypeEntity;
+import br.com.luizalabs.repositories.entities.ProcessingStatusTypeEntity;
 import br.com.luizalabs.usecases.exceptions.AnnouncementNotFoundException;
+import br.com.luizalabs.usecases.exceptions.AnnouncementProcessedException;
 
 import javax.inject.Singleton;
 import java.util.Optional;
@@ -27,6 +31,9 @@ public class AnnouncementAdapterImpl implements AnnouncementAdapter {
                 .destinatary(announcementDTO.getDestinatary())
                 .message(announcementDTO.getMessage())
                 .type(AnnouncementType.valueOf(announcementDTO.getType().name()))
+                .dateTimeOfSending(announcementDTO.getDateTimeOfSending())
+                .dateTimeToSend(announcementDTO.getDateTimeToSend())
+                .status(ProcessingStatusType.valueOf(announcementDTO.getStatus().name()))
                 .build()
                 .get();
     }
@@ -38,6 +45,9 @@ public class AnnouncementAdapterImpl implements AnnouncementAdapter {
                 .destinatary(announcementEntity.getDestinatary())
                 .message(announcementEntity.getMessage())
                 .type(AnnouncementType.valueOf(announcementEntity.getType().name()))
+                .dateTimeOfSending(announcementEntity.getDateTimeOfSending())
+                .dateTimeToSend(announcementEntity.getDateTimeToSend())
+                .status(ProcessingStatusType.valueOf(announcementEntity.getStatus().name()))
                 .build()
                 .get();
     }
@@ -49,6 +59,9 @@ public class AnnouncementAdapterImpl implements AnnouncementAdapter {
                 .destinatary(announcementEntity.getDestinatary())
                 .message(announcementEntity.getMessage())
                 .type(AnnouncementTypeDTO.valueOf(announcementEntity.getType().name()))
+                .dateTimeOfSending(announcementEntity.getDateTimeOfSending())
+                .dateTimeToSend(announcementEntity.getDateTimeToSend())
+                .status(ProcessingStatusTypeDTO.valueOf(announcementEntity.getStatus().name()))
                 .build();
     }
 
@@ -59,6 +72,9 @@ public class AnnouncementAdapterImpl implements AnnouncementAdapter {
                 .destinatary(announcement.getDestinatary())
                 .message(announcement.getMessage())
                 .type(AnnouncementTypeEntity.valueOf(announcement.getType().name()))
+                .dateTimeOfSending(announcement.getDateTimeOfSending())
+                .dateTimeToSend(announcement.getDateTimeToSend())
+                .status(ProcessingStatusTypeEntity.valueOf(announcement.getStatus().name()))
                 .build();
     }
 
@@ -86,6 +102,10 @@ public class AnnouncementAdapterImpl implements AnnouncementAdapter {
             throw new AnnouncementNotFoundException();
         }
 
-        repository.delete(announcementEntityOptional.get());
+        AnnouncementEntity entity = announcementEntityOptional.get();
+        if (entity.getStatus().equals(ProcessingStatusTypeEntity.PROCESSED)) {
+            throw new AnnouncementProcessedException();
+        }
+        repository.delete(entity);
     }
 }
