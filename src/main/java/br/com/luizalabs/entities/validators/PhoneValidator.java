@@ -1,4 +1,4 @@
-package br.com.luizalabs.entities;
+package br.com.luizalabs.entities.validators;
 
 import java.util.List;
 import java.util.regex.Pattern;
