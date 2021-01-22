@@ -63,4 +63,20 @@ public class Announcement {
     public static Builder builder() {
         return new Builder();
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public String getDestinatary() {
+        return destinatary;
+    }
+
+    public AnnouncementType getType() {
+        return type;
+    }
 }
