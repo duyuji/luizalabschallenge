@@ -20,27 +20,30 @@ public class Announcement {
         }
 
         public Builder type(AnnouncementType type) {
-            if(type == null)
-                throw new NullPointerException("Type could'not be null");
             this.type = type;
             return this;
         }
 
         public Builder destinatary(String destinatary) {
-            if(destinatary == null)
-                throw new NullPointerException("Destinatary could'not be null");
             this.destinatary = destinatary;
             return this;
         }
 
         public Builder message(String message) {
-            if(message == null)
-                throw new NullPointerException("Message could'not be null");
             this.message = message;
             return this;
         }
 
         public Optional<Announcement> build() {
+            if(type == null)
+                return Optional.empty();
+
+            if(destinatary == null || destinatary.isEmpty())
+                return Optional.empty();
+
+            if(message == null || message.isEmpty())
+                return Optional.empty();
+
             if (type.getValidator().isValid(destinatary)) {
                 return Optional.of(new Announcement(id, message, destinatary, type));
             }
