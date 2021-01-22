@@ -13,27 +13,6 @@ class PhoneValidatorSpec extends Specification {
         PHONE_VALIDATOR.isValid(cellphoneNumber)
     }
 
-    void 'test a valid phone number'() {
-        def cellphoneNumber = "1144192222"
-
-        expect:
-        PHONE_VALIDATOR.isValid(cellphoneNumber)
-    }
-
-    void 'test a invalid phone number'() {
-        def cellphoneNumber = "11444192222"
-
-        expect:
-        !PHONE_VALIDATOR.isValid(cellphoneNumber)
-    }
-
-    void 'test a invalid phone number without DDD'() {
-        def cellphoneNumber = "44192222"
-
-        expect:
-        !PHONE_VALIDATOR.isValid(cellphoneNumber)
-    }
-
     void 'test a invalid cellphone number without DDD'() {
         def cellphoneNumber = "944192222"
 

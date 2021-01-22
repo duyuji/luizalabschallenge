@@ -12,9 +12,8 @@ public class PhoneValidator implements AnnoucementValidator {
         return phoneNumber != null
                 && !phoneNumber.isEmpty()
                 && PATTERN.matcher(phoneNumber).matches()
-                && phoneNumber.length() >= 10
-                && phoneNumber.length() <= 11
-                && (phoneNumber.length() > 10 ? Integer.parseInt(phoneNumber.substring(2, 3)) == 9 : true)
+                && phoneNumber.length() == 11
+                && Integer.parseInt(phoneNumber.substring(2, 3)) == 9
                 && DDD.contains(Integer.parseInt(phoneNumber.substring(0, 2)));
     }
 }
