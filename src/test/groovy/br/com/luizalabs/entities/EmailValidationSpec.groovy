@@ -34,11 +34,11 @@ class EmailValidationSpec extends Specification {
         true == EMAIL_VALIDATOR.isValid(email)
     }
 
-    void 'test a valid email with . at the beginning'() {
+    void 'test a invalid email with . at the beginning'() {
         def email = '.custodio@gmail.com'
 
         expect:
-        true == EMAIL_VALIDATOR.isValid(email)
+        false == EMAIL_VALIDATOR.isValid(email)
     }
 
     void 'test a invalid email with @ at the beginning'() {
