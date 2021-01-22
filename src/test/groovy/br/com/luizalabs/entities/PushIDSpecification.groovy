@@ -9,13 +9,13 @@ class PushIDSpecification extends Specification {
         def pushID = "1"
 
         expect:
-        true == PUSH_ID_VALIDATOR.isvalid(pushID);
+        true == PUSH_ID_VALIDATOR.isValid(pushID);
     }
 
     def 'test a invalid push id'() {
         def pushID = ""
 
         expect:
-        false == PUSH_ID_VALIDATOR.isvalid(pushID);
+        false == PUSH_ID_VALIDATOR.isValid(pushID);
     }
 }
