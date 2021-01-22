@@ -41,4 +41,3 @@ class PhoneValidatorSpec extends Specification {
         false == PHONE_VALIDATOR.isValid(cellphoneNumber)
     }
 }
-}
