@@ -2,7 +2,7 @@ package br.com.luizalabs.entities
 
 import spock.lang.Specification
 
-class AnnouncementTypeSpecification extends Specification {
+class AnnouncementTypeEntitySpecification extends Specification {
 
     def 'test a valid email announcement type'() {
         def email = 'eduardo.custodio@gmail.com'
